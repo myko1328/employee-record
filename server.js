@@ -6,6 +6,9 @@ const app = express()
 //Connect DB
 connectDB()
 
+//Init middleware to accept req.body
+app.use(express.json({ extended: false }))
+
 app.get('/', (req, res) =>
   res.json({ msg: 'Welcome to the Employee Record API' })
 )
