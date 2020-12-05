@@ -1,9 +1,10 @@
+import { Home } from '../pages/Home'
 import './App.css'
 
-function App() {
+const App = () => {
   return (
     <div>
-      <h1>HELLO WORLD</h1>
+      <Home />
     </div>
   )
 }
