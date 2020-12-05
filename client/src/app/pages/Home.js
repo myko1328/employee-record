@@ -1,20 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { loginUser, loadUser } from '../../actions/userActions'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
-export const Home = () => {
+const Home = ({ loginUser, isAuthenticated }) => {
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  })
+
+  const { email, password } = user
+  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    loginUser({
+      email,
+      password,
+    })
+  }
+
+  if (isAuthenticated) {
+    return <Redirect to="/employee-dashboard" />
+  }
+
   return (
     <div>
       <h1>HOME</h1>
 
-      <form>
+      <form onSubmit={onSubmit}>
         <h3>LOGIN</h3>
-        <label>Username: </label>
-        <input />
+        <label>Email: </label>
+        <input type="email" name="email" value={email} onChange={onChange} />
 
         <label>Password: </label>
-        <input />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={onChange}
+        />
 
         <input type="submit" value="login" />
       </form>
     </div>
   )
 }
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.users.isAuthenticated,
+})
+
+export default connect(mapStateToProps, { loginUser })(Home)
