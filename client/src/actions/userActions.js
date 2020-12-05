@@ -10,6 +10,29 @@ import {
 } from './Types'
 import axios from 'axios'
 
+//Register User Action
+export const registerUser = (user) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  try {
+    const res = await axios.post('/api/users', user, config)
+    dispatch({
+      type: REGISTER_SUCCESS,
+      payload: res.data, //Token
+    })
+
+    dispatch(loadUser())
+  } catch (err) {
+    dispatch({
+      type: REGISTER_FAIL,
+      payload: err.response.data.msg,
+    })
+  }
+}
+
 //Login User Action
 export const loginUser = (user) => async (dispatch) => {
   const config = {
@@ -47,3 +70,9 @@ export const loadUser = () => async (dispatch) => {
     })
   }
 }
+
+//Logout Action
+export const logout = () => ({ type: LOGOUT })
+
+//Clear Errors
+export const clearErrors = () => ({ type: CLEAR_ERRORS })
