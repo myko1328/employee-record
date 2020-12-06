@@ -1,9 +1,10 @@
 import React from 'react'
+import Employees from '../../components/employees/Employees'
 
 const EmployeeDashboard = () => {
   return (
     <div>
-      <h1>AHA! KASULOD NAKO!</h1>
+      <Employees />
     </div>
   )
 }

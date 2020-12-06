@@ -14,6 +14,10 @@ const AddEmployee = () => {
           <input />
         </div>
         <div style={{ marginBottom: '20px' }}>
+          <label>Email</label>
+          <input />
+        </div>
+        <div style={{ marginBottom: '20px' }}>
           <label>Phone</label>
           <input />
         </div>
@@ -25,6 +29,8 @@ const AddEmployee = () => {
           <label>Status</label>
           <input />
         </div>
+
+        <input type="submit" value="Add Contact" />
       </form>
     </div>
   )

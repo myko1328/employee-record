@@ -6,6 +6,7 @@ import Home from '../pages/Home'
 import Register from '../pages/Register'
 import setAuthToken from '../../utils/utils'
 import './App.css'
+import AddEmployee from '../../components/employees/AddEmployee'
 
 if (localStorage.token) {
   setAuthToken(localStorage.token)
@@ -22,7 +23,12 @@ const App = () => {
             path="/employee-dashboard"
             component={EmployeeDashboard}
           />
-          <Route exact path="/register" component={Register} />
+          <Route exact path="/register" component={Register} />\
+          <Route
+            exact
+            path="/employee-dashboard/add-employee"
+            component={AddEmployee}
+          />
         </Switch>
       </Router>
     </Fragment>
