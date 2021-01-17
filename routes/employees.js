@@ -21,6 +21,27 @@ router.get('/', auth, async (req, res) => {
   }
 })
 
+// @route   GET api/employees/:id
+// @desc    GET employee by ID
+// @access  Private
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const employee = await Employees.findById(req.params.id)
+
+    if (!employee) {
+      return res.status(404).json({ msg: 'Employee not found' })
+    }
+
+    res.json(employee)
+  } catch (err) {
+    console.error(err.message)
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Employee not found' })
+    }
+    res.status(500).send('Server Error')
+  }
+})
+
 // @route   POST api/employees
 // @desc    Add new employee record
 // @access  Private

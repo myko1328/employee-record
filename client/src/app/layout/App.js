@@ -1,12 +1,16 @@
-import React, { Fragment } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import PrivateRouting from '../../routes/PrivateRouting'
-import EmployeeDashboard from '../pages/EmployeeDashboard'
-import Home from '../pages/Home'
-import Register from '../pages/Register'
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import setAuthToken from '../../utils/utils'
 import './App.css'
-import AddEmployee from '../../components/employees/AddEmployee'
+
+import { Layout } from 'antd'
+
+import Navigation from '../../components/nav/Navigation'
+import FooterNav from '../../components/nav/FooterNav'
+import Breadcrumbs from '../../components/nav/Breadcrumbs'
+import Routes from '../routes/Routes'
+
+const { Header, Content } = Layout
 
 if (localStorage.token) {
   setAuthToken(localStorage.token)
@@ -14,24 +18,21 @@ if (localStorage.token) {
 
 const App = () => {
   return (
-    <Fragment>
+    <Layout style={{ minHeight: '100vh' }}>
       <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <PrivateRouting
-            exact
-            path="/employee-dashboard"
-            component={EmployeeDashboard}
+        <Navigation />
+        <Layout className="site-layout">
+          <Header
+            style={{ padding: 0, height: '67px', backgroundColor: 'white' }}
           />
-          <Route exact path="/register" component={Register} />\
-          <Route
-            exact
-            path="/employee-dashboard/add-employee"
-            component={AddEmployee}
-          />
-        </Switch>
+          <Breadcrumbs />
+          <Content style={{ margin: '0 16px', background: 'white' }}>
+            <Routes />
+          </Content>
+          <FooterNav />
+        </Layout>
       </Router>
-    </Fragment>
+    </Layout>
   )
 }
 
