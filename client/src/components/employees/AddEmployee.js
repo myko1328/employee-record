@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { addEmployee } from '../../actions/employeeActions'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { Row, Col, Divider } from 'antd'
 import { Link } from 'react-router-dom'
 
 const AddEmployee = ({ addEmployee }) => {
@@ -38,7 +37,8 @@ const AddEmployee = ({ addEmployee }) => {
 
   return (
     <div>
-      <Divider orientation="left">ADD EMPLOYEE</Divider>
+      <h1>ADD EMPLOYEE</h1>
+      {/* <Divider orientation="left">ADD EMPLOYEE</Divider>
       <Row>
         <Col
           style={{
@@ -143,7 +143,7 @@ const AddEmployee = ({ addEmployee }) => {
             </Link>
           </form>
         </Col>
-      </Row>
+      </Row> */}
       {/* <h1>ADD EMPLOYEE</h1>
       <form onSubmit={onSubmit}>
         <div style={{ marginBottom: '20px' }}>

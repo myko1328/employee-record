@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import App from './app/layout/App'
 import { Provider } from 'react-redux'
 import store from './store'
-import 'antd/dist/antd.css'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,5 +10,5 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )

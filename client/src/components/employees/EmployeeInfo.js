@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getEmployee, deleteEmployee } from '../../actions/employeeActions'
 import { useHistory } from 'react-router-dom'
-import { Row, Col } from 'antd'
 
 const EmployeeInfo = ({ getEmployee, employee, match }) => {
   let history = useHistory()
@@ -31,7 +30,7 @@ const EmployeeInfo = ({ getEmployee, employee, match }) => {
       <button type="button" onClick={() => history.goBack()}>
         BACK
       </button> */}
-      <Row gutter={[16, 16]} style={{ border: '1px solid #dddddd' }}>
+      {/* <Row gutter={[16, 16]} style={{ border: '1px solid #dddddd' }}>
         <Col span={4}>picture here</Col>
         <Col span={8}>
           <h1>FULL NAME:</h1>
@@ -53,10 +52,10 @@ const EmployeeInfo = ({ getEmployee, employee, match }) => {
         style={{ border: '1px solid #dddddd', marginTop: '40px' }}
       >
         <Col span={6} style={{ borderLeft: '1px solid #dddddd' }}>
-          <h3>Date Hired</h3>
+          <h3>Date Hired (to be updated)</h3>
           <h3>ID Number:</h3>
           <h3>Position Title:</h3>
-          <h3>Sex:</h3>
+          <h3>Gender:</h3>
           <h3>Marital Status:</h3>
         </Col>
         <Col span={8}>
@@ -75,7 +74,8 @@ const EmployeeInfo = ({ getEmployee, employee, match }) => {
           <h3>Police Clearance:</h3>
           <h3>Barangay Clearance:</h3>
         </Col>
-      </Row>
+      </Row> */}
+      <h1>INFO</h1>
     </div>
   )
 }
